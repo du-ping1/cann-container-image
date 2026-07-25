@@ -33,12 +33,12 @@ on:
         description: 'CANN unique tag'
         required: true
         type: string
-        default: '9.1.0.B090-a3-ubuntu22.04-py3.12'
+        default: '9.1.0.B120-a3-ubuntu22.04-py3.12'
       cann_version:
         description: 'CANN version'
         required: true
         type: string
-        default: '9.1.0.B090'
+        default: '9.1.0.B120'
       py_version:
         description: 'Python version'
         required: true
@@ -91,8 +91,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_TOKEN }}
+          username: ${{ secrets.QUAY_DAILY_USERNAME }}
+          password: ${{ secrets.QUAY_DAILY_TOKEN }}
           ecr: false
           logout: false
 
@@ -148,8 +148,8 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: quay.io
-          username: ${{ secrets.QUAY_USERNAME }}
-          password: ${{ secrets.QUAY_TOKEN }}
+          username: ${{ secrets.QUAY_DAILY_USERNAME }}
+          password: ${{ secrets.QUAY_DAILY_TOKEN }}
 
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
