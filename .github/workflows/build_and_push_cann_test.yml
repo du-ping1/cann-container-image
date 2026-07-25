@@ -101,7 +101,7 @@ jobs:
         id: build
         with:
           platforms: ${{ matrix.platform }}
-          tags: quay.io/canuunac/cann
+          tags: quay.io/atlas_inference/cann
           file: ${{ github.workspace }}/cann_test_version/${{ inputs.dockerfile }}
           context: ${{ github.workspace }}
           build-args: |
@@ -154,5 +154,5 @@ jobs:
       - name: Create manifest list and push
         working-directory: ${{ runner.temp }}/digests
         run: |
-          docker buildx imagetools create -t quay.io/canuunac/cann:${{ inputs.cann_tag }} \
-            $(printf 'quay.io/canuunac/cann@sha256:%s ' *)
+          docker buildx imagetools create -t quay.io/atlas_inference/cann:${{ inputs.cann_tag }} \
+            $(printf 'quay.io/atlas_inference/cann@sha256:%s ' *)
